@@ -1,0 +1,35 @@
+iphone-case-store/
+├── index.html          # Page principale
+├── payment.html        # Page de paiement
+├── style.css           # Styles CSS
+├── script.js           # JavaScript
+└── cart.js             # Gestion du panier
+
+je veux que 3 annonces avec la couleur sélectionnable et marqué dans le panier (commande)
+1er Coques
+CP Company
+10€
+couleurs: bleu noir vert
+url image bleu : https://i.imgur.com/Zrt9pBg.png
+url image noir : https://i.imgur.com/p5V1YIz.png
+url image vert : https://i.imgur.com/3jKVTdT.png
+2eme coques
+Stone Island
+
+2eme Coques
+Stone Island
+5€
+couleurs: bleu noir vert
+url image bleu : https://i.imgur.com/ZYocgMs.png
+url image noir : https://i.imgur.com/gXrKjEb.png
+url image vert : https://i.imgur.com/wH1K8xx.png
+2eme coques
+Stone Island
+
+3eme Coques
+Gertrude
+10€
+couleurs: bleu noir vert
+url image bleu : https://i.imgur.com/c2gwhv3.png
+url image noir : https://i.imgur.com/Zl1vyPe.png
+url image vert : https://i.imgur.com/SxsTRhf.png

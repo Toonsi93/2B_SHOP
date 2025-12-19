@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2B SHOP - Coques iPhone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&family=Playfair+Display:wght@800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Variables pour les modes */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #10b981;
+            --danger-color: #ef4444;
+            --background-color: #ffffff;
+            --text-color: #000000;
+            --card-bg: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --header-bg: rgba(255, 255, 255, 0.98);
+            --footer-bg: #000000;
+            --header-height: 60px;
+            --safe-area-top: env(safe-area-inset-top);
+            --safe-area-bottom: env(safe-area-inset-bottom);
+        }
+        .transparent-mode {
+            --card-bg: rgba(255, 255, 255, 0.12);
+            --header-bg: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* Animation d'entrée */
+        @keyframes pageSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes titleExpand {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Reset optimisé pour mobile */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+    /* ... tes styles existants ... */
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0.8;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+        @supports (padding: max(0px)) {
+            body {
+                padding-top: max(calc(var(--header-height) + var(--safe-area-top)), calc(var(--header-height) + 20px));
+            }
+        }
+
+        /* Conteneur principal */
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* Fond vidéo optimisé */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(0.35);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Header optimisé iPhone */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: var(--header-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding-top: var(--safe-area-top);
+            border-bottom: 1px solid var(--border-color);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header-container {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+        }
+
+        .logo {
+            flex-shrink: 0;
+        }
+
+        .logo h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .tagline {
+            font-size: 0.7rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #6b7280;
+            font-weight: 500;
+            display: none;
+        }
+
+        /* Contrôles header compacts */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Bouton Payer dans le header */
+        .pay-now-btn {
+            display: none;
+            background: linear-gradient(135deg, var(--accent-color), #059669);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .pay-now-btn:active {
+            transform: scale(0.95);
+        }
+
+        .pay-now-btn.show {
+            display: flex;
+        }
+
+        /* Panier mobile */
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 8px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 36px;
+        }
+
+        .cart-icon:active {
+            transform: scale(0.95);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: var(--danger-color);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Panier latéral */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--card-bg);
+            z-index: 1001;
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            padding-top: calc(var(--header-height) + var(--safe-area-top));
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 20px 16px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: var(--card-bg);
+            z-index: 2;
+            flex-shrink: 0;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-color);
+            padding: 4px 12px;
+        }
+
+        /* Section des articles */
+        .cart-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 80px;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+            color: #888;
+        }
+
+        .empty-cart i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+            gap: 12px;
+            background: var(--background-color);
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+
+        .cart-item img {
+            width: 70px;
+            height: 70px;
+            border-radius: 10px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .cart-item-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .cart-item-details h4 {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .cart-item-color {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 4px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            display: inline-block;
+            background: var(--border-color);
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .quantity-btn {
+            background: var(--border-color);
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: var(--danger-color);
+            cursor: pointer;
+            padding: 4px;
+            font-size: 1rem;
+        }
+
+        /* Section de paiement fixe */
+        .cart-checkout-fixed {
+            position: sticky;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 16px;
+            z-index: 3;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+
+        .cart-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .cart-total {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .cart-actions-fixed {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .clear-cart, .checkout-btn-fixed {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .clear-cart:active, .checkout-btn-fixed:active {
+            transform: scale(0.98);
+        }
+
+        .clear-cart {
+            background: var(--danger-color);
+            color: white;
+        }
+
+        .checkout-btn-fixed {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        /* Vinted et Snap en bas du panier */
+        .cart-external-links {
+            text-align: center;
+            padding-top: 16px;
+            margin-top: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .cart-external-links p {
+            margin-bottom: 12px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .cart-external-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin: 0 8px;
+            padding: 10px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+        }
+
+        .cart-external-links a:active {
+            transform: scale(0.95);
+        }
+
+        .snap-link {
+            background: #fffc00;
+            color: #000;
+        }
+
+        .vinted-link {
+            background: #1ba194;
+            color: white;
+        }
+
+        /* Hero section améliorée avec animation */
+        .hero {
+            text-align: center;
+            padding: 30px 0 40px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        .hero h2 {
+        font-family: 'Montserrat', sans-serif; /* Garde cette ligne */
+        font-size: 2.2rem; /* AJOUTE CETTE LIGNE - taille fixe */
+        font-weight: 900;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+        line-height: 1.2;
+        animation: fadeInUp 0.8s ease-out 0.5s forwards;
+        opacity: 0;
+    }
+
+        .brand-text {
+            color: var(--primary-color);
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #6b7280;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
+            animation: fadeInUp 0.8s ease-out 0.8s forwards;
+            opacity: 0;
+        }
+
+        .hero-colors {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 1s forwards;
+            opacity: 0;
+        }
+
+        .color-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .color-display:hover {
+            transform: translateY(-5px);
+        }
+
+        .color-sample {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .color-sample.blue {
+            background: #2563eb;
+        }
+
+        .color-sample.black {
+            background: #1f2937;
+        }
+
+        .color-sample.green {
+            background: #10b981;
+        }
+
+        .color-display span {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        /* Section produits */
+        .products {
+            padding: 20px 0 60px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out 1.2s forwards;
+            opacity: 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+            color: var(--primary-color);
+        }
+
+        .section-subtitle {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        /* Conteneur des annonces */
+        .ads-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .ad-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .ad-card:nth-child(1) {
+            animation-delay: 1.4s;
+        }
+        .ad-card:nth-child(2) {
+            animation-delay: 1.6s;
+        }
+        .ad-card:nth-child(3) {
+            animation-delay: 1.8s;
+        }
+
+        .ad-card:active {
+            transform: scale(0.98);
+        }
+
+        .ad-header {
+            padding: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .ad-header h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        /* Prix centré au milieu de l'annonce */
+        .ad-price-center {
+            text-align: center;
+            padding: 15px 20px;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Conteneur image agrandie */
+        .color-image-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Effet rebond infini */
+        .bouncing-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 25px;
+            object-fit: cover;
+            animation: bounceInfinite 3s ease-in-out infinite;
+            transform-origin: center center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .bouncing-image::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 35px;
+            background: linear-gradient(135deg, 
+                rgba(37, 99, 235, 0.3) 0%,
+                rgba(16, 185, 129, 0.3) 50%,
+                rgba(139, 92, 246, 0.3) 100%);
+            z-index: -1;
+            filter: blur(15px);
+            animation: glowPulse 2s ease-in-out infinite alternate;
+        }
+
+        /* Animation rebond */
+        @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+        /* Animation lumière */
+        @keyframes glowPulse {
+            0% {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+
+        /* Sélecteur de couleurs */
+        .color-selector {
+            padding: 0 20px 20px;
+            text-align: center;
+        }
+
+        .color-selector h4 {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .color-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .color-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .color-option input[type="radio"] {
+            display: none;
+        }
+
+        .color-preview {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .color-option input[type="radio"]:checked + .color-preview {
+            border-color: var(--primary-color);
+            transform: scale(1.15);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
+        .color-preview::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: currentColor;
+            opacity: 0.1;
+            transition: opacity 0.3s ease;
+        }
+
+        .color-option input[type="radio"]:checked + .color-preview::after {
+            opacity: 0;
+        }
+
+        .color-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .color-option:hover .color-preview img {
+            transform: scale(1.1);
+        }
+
+        .color-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .color-option input[type="radio"]:checked ~ .color-name {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Footer de l'annonce avec bouton centré */
+        .ad-footer-center {
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: auto;
+        }
+
+        .add-to-cart-ad {
+            padding: 14px 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .add-to-cart-ad::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .add-to-cart-ad:hover::before {
+            left: 100%;
+        }
+
+        .add-to-cart-ad:active {
+            transform: scale(0.95);
+        }
+
+        .add-to-cart-ad:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Footer mobile */
+        footer {
+            text-align: center;
+            padding: 25px 16px;
+            background: var(--footer-bg);
+            border-top: 1px solid var(--border-color);
+            position: relative;
+            z-index: 1;
+            padding-bottom: calc(25px + var(--safe-area-bottom));
+            color: white;
+            animation: fadeInUp 0.8s ease-out 2s forwards;
+            opacity: 0;
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+
+        .footer-tagline {
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 0.8rem;
+        }
+
+        /* Notifications */
+        .cart-notification {
+            position: fixed;
+            top: calc(var(--header-height) + var(--safe-area-top) + 20px);
+            right: 16px;
+            left: 16px;
+            background: linear-gradient(135deg, #00b09b, #96c93d);
+            color: white;
+            padding: 14px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 10000;
+            animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+        }
+
+        /* Améliorations pour iPhone spécifique */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+            }
+            
+            .ads-container {
+                gap: 30px;
+            }
+            
+            .cart-sidebar {
+                width: 380px;
+            }
+            
+            .bouncing-image {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .color-image-container {
+                height: 350px;
+            }
+            
+            .pay-now-btn {
+                display: none;
+            }
+            
+            .hero h2 {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Pour les très petits écrans */
+        @media (max-width: 360px) {
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .ad-price-center {
+                font-size: 1.8rem;
+            }
+            
+            .color-options {
+                gap: 12px;
+            }
+            
+            .color-preview {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        /* Prévention du zoom sur iOS */
+        input, select, textarea {
+            font-size: 16px;
+        }
+
+        /* Optimisation du chargement */
+        .loading-placeholder {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body class="light-theme transparent-mode">
+    <!-- Fond vidéo optimisé -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline id="bgVideo">
+            <source src="video.mp4" type="video/mp4">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-red-lights-flow-3236-large.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Header fixe optimisé -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1><i class="fas fa-gem"></i> 2B.<span>SHOP</span></h1>
+                <p class="tagline">COQUES iPhone PREMIUM</p>
+            </div>
+            
+            <div class="header-controls">
+                <button class="pay-now-btn" id="payNowHeader" onclick="goToPayment()">
+                    <i class="fas fa-lock"></i> Payer
+                </button>
+                
+                <div class="cart-icon" id="cartIcon" aria-label="Panier">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Panier latéral -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-bag"></i> Votre Panier</h3>
+            <button class="close-cart" id="closeCart" aria-label="Fermer le panier">&times;</button>
+        </div>
+        
+        <div class="cart-content">
+            <div class="cart-items" id="cartItems">
+                <div class="empty-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>Votre panier est vide</p>
+                </div>
+            </div>
+            
+            <!-- Section de paiement fixe -->
+            <div class="cart-checkout-fixed" id="cartCheckoutFixed">
+                <div class="cart-summary">
+                    <div class="cart-total">
+                        Total: <span class="total-price" id="cartTotal">0.00€</span>
+                    </div>
+                </div>
+                <div class="cart-actions-fixed">
+                    <button class="clear-cart" id="clearCart">
+                        <i class="fas fa-trash"></i> Vider
+                    </button>
+                    <button class="checkout-btn-fixed" id="checkoutBtnFixed">
+                        <i class="fas fa-lock"></i> Payer
+                    </button>
+                </div>
+                
+                <!-- Vinted et Snap en bas du panier -->
+                <div class="cart-external-links">
+                    <p>Commander aussi sur:</p>
+                    <a href="https://snapchat.com/t/9bEQODq4" class="snap-link" target="_blank" rel="noopener">
+                        <i class="fab fa-snapchat"></i> Snapchat
+                    </a>
+                    <a href="https://vinted.fr" class="vinted-link" target="_blank" rel="noopener">
+                        <i class="fas fa-tshirt"></i> Vinted
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenu principal -->
+    <main class="container">
+        <section class="hero">
+    <div class="hero-content">
+        <h2 style="color: rgb(255, 255, 255);">COQUES PREMIUM</h2>
+                <p class="hero-subtitle">CP Company • Stone Island • Gertrude</p>
+                <div class="hero-colors">
+                    <div class="color-display">
+                        <div class="color-sample blue"></div>
+                        <span>BLEU</span>
+                    </div>
+                    <div class="color-display">
+                        <div class="color-sample black"></div>
+                        <span>NOIR</span>
+                    </div>
+                    <div class="color-display">
+                        <div class="color-sample green"></div>
+                        <span>VERT</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="products">
+            <div class="section-header">
+                <h2><i class="fas fa-crown"></i> COLLECTION EXCLUSIVE</h2>
+                <p class="section-subtitle">Sélectionnez la couleur pour chaque coque</p>
+            </div>
+
+            <div class="ads-container" id="adsContainer">
+                <!-- Annonce 1: CP Company -->
+                <div class="ad-card" id="ad1">
+                    <div class="ad-header">
+                        <h3>CP Company</h3>
+                    </div>
+                    
+                    <!-- Prix centré au milieu -->
+                    <div class="ad-price-center">10€</div>
+                    
+                    <!-- Image agrandie avec effet rebond -->
+                    <div class="color-image-container">
+                        <img id="cpcompany-main-image" src="https://i.imgur.com/Zrt9pBg.png" alt="CP Company Bleu" class="bouncing-image">
+                    </div>
+                    
+                    <div class="color-selector">
+                        <h4>Choisissez votre couleur :</h4>
+                        <div class="color-options">
+                            <label class="color-option">
+                                <input type="radio" name="cpcompany-color" value="blue" checked 
+                                       onchange="updateMainImage('cpcompany', 'blue', 'https://i.imgur.com/Zrt9pBg.png')">
+                                <div class="color-preview">
+                                    <img src="https://i.imgur.com/Zrt9pBg.png" alt="CP Company Bleu">
+                                </div>
+                                <span class="color-name">Bleu</span>
+                            </label>
+                            
+                            <label class="color-option">
+                                <input type="radio" name="cpcompany-color" value="black"
+                                       onchange="updateMainImage('cpcompany', 'black', 'https://i.imgur.com/p5V1YIz.png')">
+                                <div class="color-preview">
+                                    <img src="https://i.imgur.com/p5V1YIz.png" alt="CP Company Noir">
+                                </div>
+                                <span class="color-name">Noir</span>
+                            </label>
+                            
+                            <label class="color-option">
+                                <input type="radio" name="cpcompany-color" value="green"
+                                       onchange="updateMainImage('cpcompany', 'green', 'https://i.imgur.com/3jKVTdT.png')">
+                                <div class="color-preview">
+                                    <img src="https://i.imgur.com/3jKVTdT.png" alt="CP Company Vert">
+                                </div>
+                                <span class="color-name">Vert</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Bouton Ajouter au panier centré en bas -->
+                    <div class="ad-footer-center">
+                        <button class="add-to-cart-ad" onclick="addAdToCart('cpcompany')">
+                            <i class="fas fa-cart-plus"></i> Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Annonce 2: Stone Island -->
+                <div class="ad-card" id="ad2">
+                    <div class="ad-header">
+                        <h3>Stone Island</h3>
+                    </div>
+                    
+                    <!-- Prix centré au milieu -->
+                    <div class="ad-price-center">5€</div>
+                    
+                    <!-- Image agrandie avec effet rebond -->
+                    <div class="color-image-container">
+                        <img id="stoneisland-main-image" src="https://i.imgur.com/ZYocgMs.png" alt="Stone Island Bleu" class="bouncing-image">
+                    </div>
+                    
+                    <div class="color-selector">
+                        <h4>Choisissez votre couleur :</h4>
+                        <div class="color-options">
+                            <label class="color-option">
+                                <input type="radio" name="stoneisland-color" value="blue" checked
+                                       onchange="updateMainImage('stoneisland', 'blue', 'https://i.imgur.com/ZYocgMs.png')">
+                                <div class="color-preview">
+                                    <img src="https://i.imgur.com/ZYocgMs.png" alt="Stone Island Bleu">
+                                </div>
+                                <span class="color-name">Bleu</span>
+                            </label>
+                            
+                            <label class="color-option">
+                                <input type="radio" name="stoneisland-color" value="black"
+                                       onchange="updateMainImage('stoneisland', 'black', 'https://i.imgur.com/gXrKjEb.png')">
+                                <div class="color-preview">
+                                    <img src="https://i.imgur.com/gXrKjEb.png" alt="Stone Island Noir">
+                                </div>
+                                <span class="color-name">Noir</span>
+                            </label>
+                            
+                            <label class="color-option">
+                                <input type="radio" name="stoneisland-color" value="green"
+                                       onchange="updateMainImage('stoneisland', 'green', 'https://i.imgur.com/wH1K8xx.png')">
+                                <div class="color-preview">
+                                    <img src="https://i.imgur.com/wH1K8xx.png" alt="Stone Island Vert">
+                                </div>
+                                <span class="color-name">Vert</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Bouton Ajouter au panier centré en bas -->
+                    <div class="ad-footer-center">
+                        <button class="add-to-cart-ad" onclick="addAdToCart('stoneisland')">
+                            <i class="fas fa-cart-plus"></i> Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Annonce 3: Gertrude -->
+                <div class="ad-card" id="ad3">
+                    <div class="ad-header">
+                        <h3>Gertrude</h3>
+                    </div>
+                    
+                    <!-- Prix centré au milieu -->
+                    <div class="ad-price-center">10€</div>
+                    
+                    <!-- Image agrandie avec effet rebond -->
+                    <div class="color-image-container">
+                        <img id="gertrude-main-image" src="https://i.imgur.com/c2gwhv3.png" alt="Gertrude Bleu" class="bouncing-image">
+                    </div>
+                    
+                    <div class="color-selector">
+                        <h4>Choisissez votre couleur :</h4>
+                        <div class="color-options">
+                            <label class="color-option">
+                                <input type="radio" name="gertrude-color" value="blue" checked
+                                       onchange="updateMainImage('gertrude', 'blue', 'https://i.imgur.com/c2gwhv3.png')">
+                                <div class="color-preview">
+                                    <img src="https://i.imgur.com/c2gwhv3.png" alt="Gertrude Bleu">
+                                </div>
+                                <span class="color-name">Bleu</span>
+                            </label>
+                            
+                            <label class="color-option">
+                                <input type="radio" name="gertrude-color" value="black"
+                                       onchange="updateMainImage('gertrude', 'black', 'https://i.imgur.com/Zl1vyPe.png')">
+                                <div class="color-preview">
+                                    <img src="https://i.imgur.com/Zl1vyPe.png" alt="Gertrude Noir">
+                                </div>
+                                <span class="color-name">Noir</span>
+                            </label>
+                            
+                            <label class="color-option">
+                                <input type="radio" name="gertrude-color" value="green"
+                                       onchange="updateMainImage('gertrude', 'green', 'https://i.imgur.com/SxsTRhf.png')">
+                                <div class="color-preview">
+                                    <img src="https://i.imgur.com/SxsTRhf.png" alt="Gertrude Vert">
+                                </div>
+                                <span class="color-name">Vert</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Bouton Ajouter au panier centré en bas -->
+                    <div class="ad-footer-center">
+                        <button class="add-to-cart-ad" onclick="addAdToCart('gertrude')">
+                            <i class="fas fa-cart-plus"></i> Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 2B SHOP. Tous droits réservés.</p>
+            <p class="footer-tagline">C'est la même qualité, c'est juste le prix qui baisse <i class="fas fa-gem"></i></p>
+        </div>
+    </footer>
+
+    <script>
+        // Configuration des produits
+        const products = {
+            cpcompany: {
+                id: 'cpcompany',
+                name: 'Coque CP Company',
+                basePrice: 10.00,
+                colors: {
+                    blue: {
+                        name: 'Bleu',
+                        price: 10.00,
+                        imageUrl: 'https://i.imgur.com/Zrt9pBg.png'
+                    },
+                    black: {
+                        name: 'Noir',
+                        price: 10.00,
+                        imageUrl: 'https://i.imgur.com/p5V1YIz.png'
+                    },
+                    green: {
+                        name: 'Vert',
+                        price: 10.00,
+                        imageUrl: 'https://i.imgur.com/3jKVTdT.png'
+                    }
+                }
+            },
+            stoneisland: {
+                id: 'stoneisland',
+                name: 'Coque Stone Island',
+                basePrice: 5.00,
+                colors: {
+                    blue: {
+                        name: 'Bleu',
+                        price: 5.00,
+                        imageUrl: 'https://i.imgur.com/ZYocgMs.png'
+                    },
+                    black: {
+                        name: 'Noir',
+                        price: 5.00,
+                        imageUrl: 'https://i.imgur.com/gXrKjEb.png'
+                    },
+                    green: {
+                        name: 'Vert',
+                        price: 5.00,
+                        imageUrl: 'https://i.imgur.com/wH1K8xx.png'
+                    }
+                }
+            },
+            gertrude: {
+                id: 'gertrude',
+                name: 'Coque Gertrude',
+                basePrice: 10.00,
+                colors: {
+                    blue: {
+                        name: 'Bleu',
+                        price: 10.00,
+                        imageUrl: 'https://i.imgur.com/c2gwhv3.png'
+                    },
+                    black: {
+                        name: 'Noir',
+                        price: 10.00,
+                        imageUrl: 'https://i.imgur.com/Zl1vyPe.png'
+                    },
+                    green: {
+                        name: 'Vert',
+                        price: 10.00,
+                        imageUrl: 'https://i.imgur.com/SxsTRhf.png'
+                    }
+                }
+            }
+        };
+
+        // Gestion du panier
+        let shoppingCart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Charger les préférences
+            const savedTheme = localStorage.getItem('theme') || 'light-theme';
+            const savedTransparent = localStorage.getItem('transparentMode') || 'transparent-mode';
+            
+            document.body.className = `${savedTheme} ${savedTransparent}`;
+            
+            // Mettre à jour le compteur du panier
+            updateCartCount();
+            updatePayNowButton();
+            
+            // Setup des événements
+            setupEventListeners();
+            
+            // Démarrer les animations
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Mettre à jour l'image principale
+        function updateMainImage(brand, color, imageUrl) {
+            const mainImage = document.getElementById(`${brand}-main-image`);
+            
+            // Effet de fondu
+            mainImage.style.opacity = '0';
+            mainImage.style.transform = 'scale(0.8)';
+            
+            setTimeout(() => {
+                mainImage.src = imageUrl;
+                mainImage.alt = `${products[brand].name} ${color}`;
+                
+                // Restaurer l'opacité avec animation
+                setTimeout(() => {
+                    mainImage.style.opacity = '1';
+                    mainImage.style.transform = 'scale(1)';
+                    mainImage.style.transition = 'all 0.5s ease';
+                    
+                    // Renforcer l'animation de rebond
+                    mainImage.style.animation = 'none';
+                    setTimeout(() => {
+                        mainImage.style.animation = 'bounceInfinite 3s ease-in-out infinite';
+                    }, 50);
+                }, 100);
+            }, 300);
+        }
+
+        // Setup des événements
+        function setupEventListeners() {
+            // Panier
+            document.getElementById('cartIcon').addEventListener('click', toggleCart);
+            document.getElementById('closeCart').addEventListener('click', toggleCart);
+            document.getElementById('clearCart').addEventListener('click', clearCart);
+            document.getElementById('checkoutBtnFixed').addEventListener('click', goToPayment);
+            document.getElementById('payNowHeader').addEventListener('click', goToPayment);
+            
+            // Gestion du swipe pour fermer le panier
+            let startX = 0;
+            document.getElementById('cartSidebar').addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+            });
+            
+            document.getElementById('cartSidebar').addEventListener('touchmove', function(e) {
+                if (startX === 0) return;
+                const currentX = e.touches[0].clientX;
+                const diff = currentX - startX;
+                
+                if (diff > 50) {
+                    toggleCart();
+                    startX = 0;
+                }
+            });
+            
+            // Fermer panier en tapant à l'extérieur
+            document.addEventListener('click', function(event) {
+                const cartSidebar = document.getElementById('cartSidebar');
+                const cartIcon = document.getElementById('cartIcon');
+                const payNowBtn = document.getElementById('payNowHeader');
+                if (cartSidebar.classList.contains('active') && 
+                    !cartSidebar.contains(event.target) && 
+                    !cartIcon.contains(event.target) &&
+                    !payNowBtn.contains(event.target)) {
+                    toggleCart();
+                }
+            });
+        }
+
+        // Mettre à jour le bouton "Payer" dans le header
+        function updatePayNowButton() {
+            const payNowBtn = document.getElementById('payNowHeader');
+            if (shoppingCart.length > 0) {
+                payNowBtn.classList.add('show');
+                
+                // Calculer le total pour l'afficher dans le bouton
+                const total = shoppingCart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                payNowBtn.innerHTML = `<i class="fas fa-lock"></i> Payer ${total.toFixed(2)}€`;
+            } else {
+                payNowBtn.classList.remove('show');
+            }
+        }
+
+        // Ajouter une annonce au panier
+        function addAdToCart(brand) {
+            const product = products[brand];
+            if (!product) return;
+            
+            // Récupérer la couleur sélectionnée
+            const colorRadio = document.querySelector(`input[name="${brand}-color"]:checked`);
+            if (!colorRadio) return;
+            
+            const color = colorRadio.value;
+            const colorInfo = product.colors[color];
+            
+            // Créer un ID unique
+            const itemId = `${brand}-${color}`;
+            
+            // Vérifier si l'article existe déjà
+            const existingItemIndex = shoppingCart.findIndex(item => item.id === itemId);
+            
+            if (existingItemIndex !== -1) {
+                shoppingCart[existingItemIndex].quantity += 1;
+            } else {
+                shoppingCart.push({
+                    id: itemId,
+                    brand: brand,
+                    name: product.name,
+                    color: color,
+                    colorName: colorInfo.name,
+                    price: colorInfo.price,
+                    imageUrl: colorInfo.imageUrl,
+                    quantity: 1,
+                    addedAt: new Date().toISOString()
+                });
+            }
+            
+            // Sauvegarder et mettre à jour
+            saveCart();
+            updateCartCount();
+            updatePayNowButton();
+            
+            // Effet spécial pour l'ajout au panier
+            const button = event.target.closest('.add-to-cart-ad');
+            if (button) {
+                button.innerHTML = '<i class="fas fa-check"></i> Ajouté !';
+                button.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                
+                setTimeout(() => {
+                    button.innerHTML = '<i class="fas fa-cart-plus"></i> Ajouter au panier';
+                    button.style.background = 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))';
+                }, 1500);
+            }
+            
+            showNotification(`${product.name} (${colorInfo.name}) ajouté au panier !`, 'success');
+            
+            // Vibration si disponible
+            if (navigator.vibrate) {
+                navigator.vibrate([50, 30, 50]);
+            }
+            
+            // Si le panier est ouvert, mettre à jour l'affichage
+            if (document.getElementById('cartSidebar').classList.contains('active')) {
+                displayCartItems();
+            }
+        }
+
+        // Sauvegarder panier
+        function saveCart() {
+            localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
+        }
+
+        // Mettre à jour compteur
+        function updateCartCount() {
+            const totalItems = shoppingCart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = totalItems;
+        }
+
+        // Vider le panier
+        function clearCart() {
+            if (shoppingCart.length === 0) {
+                showNotification('Le panier est déjà vide', 'info');
+                return;
+            }
+            
+            if (confirm('Voulez-vous vraiment vider tout le panier ?')) {
+                shoppingCart = [];
+                saveCart();
+                updateCartCount();
+                updatePayNowButton();
+                displayCartItems();
+                showNotification('Panier vidé', 'success');
+            }
+        }
+
+        // Notification
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = 'cart-notification';
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+                <span>${message}</span>
+            `;
+            
+            if (type === 'info') {
+                notification.style.background = 'linear-gradient(135deg, #3b82f6, #1d4ed8)';
+            }
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 2000);
+        }
+
+        // Afficher les articles du panier
+        function displayCartItems() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const cartCheckoutFixed = document.getElementById('cartCheckoutFixed');
+            
+            if (shoppingCart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Votre panier est vide</p>
+                    </div>
+                `;
+                cartTotal.textContent = '0.00€';
+                cartCheckoutFixed.style.display = 'none';
+                return;
+            }
+            
+            // Afficher la section de paiement fixe
+            cartCheckoutFixed.style.display = 'block';
+            
+            let itemsHTML = '';
+            let total = 0;
+            
+            shoppingCart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                // Déterminer la couleur CSS
+                let colorClass = '';
+                switch(item.color) {
+                    case 'blue': colorClass = 'color-blue'; break;
+                    case 'black': colorClass = 'color-black'; break;
+                    case 'green': colorClass = 'color-green'; break;
+                }
+                
+                itemsHTML += `
+                    <div class="cart-item">
+                        <img src="${item.imageUrl}" alt="${item.name}" loading="lazy">
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <div class="cart-item-color ${colorClass}">${item.colorName}</div>
+                            <p>${item.price.toFixed(2)}€</p>
+                            <div class="cart-item-quantity">
+                                <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <span>${item.quantity}</span>
+                                <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <button class="remove-item" onclick="removeFromCart(${index})">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div style="font-weight: bold; font-size: 1rem;">
+                            ${itemTotal.toFixed(2)}€
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cartItems.innerHTML = itemsHTML;
+            cartTotal.textContent = `${total.toFixed(2)}€`;
+        }
+
+        // Mettre à jour quantité
+        function updateQuantity(index, change) {
+            if (shoppingCart[index].quantity + change < 1) {
+                removeFromCart(index);
+                return;
+            }
+            
+            shoppingCart[index].quantity += change;
+            saveCart();
+            updateCartCount();
+            updatePayNowButton();
+            displayCartItems();
+        }
+
+        // Supprimer du panier
+        function removeFromCart(index) {
+            const itemName = shoppingCart[index].name;
+            const colorName = shoppingCart[index].colorName;
+            shoppingCart.splice(index, 1);
+            saveCart();
+            updateCartCount();
+            updatePayNowButton();
+            displayCartItems();
+            showNotification(`${itemName} (${colorName}) retiré du panier`, 'info');
+        }
+
+        // Panier
+        function toggleCart() {
+            const cartSidebar = document.getElementById('cartSidebar');
+            cartSidebar.classList.toggle('active');
+            if (cartSidebar.classList.contains('active')) {
+                displayCartItems();
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Aller au paiement
+        function goToPayment() {
+            if (shoppingCart.length === 0) {
+                showNotification('Votre panier est vide !', 'info');
+                return;
+            }
+            
+            // Préparer les données de la commande
+            const orderData = {
+                cart: shoppingCart,
+                total: shoppingCart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+                date: new Date().toISOString(),
+                orderId: 'CMD-' + Date.now()
+            };
+            
+            localStorage.setItem('currentOrder', JSON.stringify(orderData));
+            window.location.href = 'payment.html';
+        }
+    </script>
+</body>
+</html>
